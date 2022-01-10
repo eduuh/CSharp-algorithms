@@ -1,0 +1,15 @@
+{
+  "configurations": {
+    "launch - netcoredbg": {
+      "adapter": "netcoredbg",
+      "configuration": {
+        "request": "launch",
+        "program": "${workspaceRoot}/schoolHRadmistration/bin/Debug/net6.0/schoolHRadmistration.dll",
+        "args": [],
+        "stopAtEntry": true,
+        "cwd": "${workspaceRoot}",
+        "env": {"MongoDbSettings:Password":"root"}
+      }
+    }
+  }
+}
