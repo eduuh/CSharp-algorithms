@@ -2,25 +2,25 @@ using System.Text.RegularExpressions;
 
 namespace fieldValidator;
 
-public delegate bool RequiredValidDel(string field);
-public delegate bool StringLengthValidDel(string field, int min, int max);
+public delegate bool RequiredFieldValidDel(string field); //form field not left empty
+public delegate bool StringLengthValidDel(string field, int min, int max); // length
 public delegate bool DateValidDel(string fieldval, out DateTime validdate);
-public delegate bool patternMatchValidDel(string fieldval, string pattern);
-public delegate bool CompareFieldValidDel(string fieldval, string fielvalCompare);
+public delegate bool PatternMatchValidDel(string fieldval, string pattern);
+public delegate bool CompareFieldsValidDel(string fieldval, string fielvalCompare);
 
 public class CommonFieldValidorFunctions
 {
-   private static RequiredValidDel _requireValidDel = null;
+   private static RequiredFieldValidDel _requireValidDel = null;
    private static StringLengthValidDel _stringLengthValidDel = null;
    private static DateValidDel _dateValidDel = null;
-   private static patternMatchValidDel _patternMatchValidDel = null;
-   private static CompareFieldValidDel _compareFieldValidDel = null;
+   private static PatternMatchValidDel _patternMatchValidDel = null;
+   private static CompareFieldsValidDel _compareFieldValidDel = null;
 
 
-   public static RequiredValidDel RequiredFieldValidDel {
+   public static RequiredFieldValidDel RequiredFieldValidDel {
       get {
           if(_requireValidDel is null)
-            _requireValidDel = new RequiredValidDel(RequiredFieldValid);
+            _requireValidDel = new RequiredFieldValidDel(RequiredFieldValid);
           return _requireValidDel;
       }
    }
@@ -33,10 +33,10 @@ public class CommonFieldValidorFunctions
       }
    }
 
-   public static patternMatchValidDel patternMatchValidDel {
+   public static PatternMatchValidDel patternMatchValidDel {
       get {
           if(_patternMatchValidDel is null)
-            _patternMatchValidDel = new patternMatchValidDel(FieldPatternValid);
+            _patternMatchValidDel = new PatternMatchValidDel(FieldPatternValid);
           return _patternMatchValidDel;
       }
    }
@@ -49,10 +49,10 @@ public class CommonFieldValidorFunctions
       }
    }
 
-   public static CompareFieldValidDel  CompareFieldValidDel {
+   public static CompareFieldsValidDel  CompareFieldValidDel {
       get {
           if(_compareFieldValidDel is null)
-            _compareFieldValidDel = new CompareFieldValidDel(FieldComparisonValid);
+            _compareFieldValidDel = new CompareFieldsValidDel(FieldComparisonValid);
           return _compareFieldValidDel;
       }
    }
