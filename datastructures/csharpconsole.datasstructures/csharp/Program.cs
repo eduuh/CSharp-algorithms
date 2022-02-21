@@ -3,6 +3,9 @@
 //var dump = ObjectDumper.Dump(person);
 //Console.WriteLine(ObjectDumper.Dump(dump));
 
+string prefix = "a+b*c-d/e";
+Console.WriteLine(Extensions.ToPostfix(prefix));
+
 //Sum Array
 int[] array= new int[5] {1, 2,3,4,5};
 //WriteLine($"{array.SumArray()}");
@@ -127,6 +130,7 @@ SortedDictionary sortedDictionary = new();
 // 
 // there are two types of heap data structures
 // 1. Max heap: each node should be greater than or equal to each of its children
+
 // 2. Min heap: each node should be smaller than or equal to each fo its childrens
 //
 //
