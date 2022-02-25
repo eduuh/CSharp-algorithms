@@ -12,3 +12,15 @@
 7. Counting Nodes 
  - Counting full nodes with two children
  - Computing sum of all the nodes  return x+y+p.data;
+
+
+7. The memory representation of a graph will affecte the time complexity. Example of memory representation.
+
+   - Adjacency Matrix
+   - Adjacency List (using an array of linked list) - out degree.
+   - Inverse Adjacency list - in degree
+   - Compact List
+
+8. depth first search uses a stack.
+9. breath first search uses a queue.
+
