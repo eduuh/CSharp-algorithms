@@ -1,3 +1,24 @@
+### Terms to use
+
+#### Code execution
+
+- A big ram is divided into managable links called segments usually 64kb large.
+
+
+This is how the program untilize the memory
+- heap
+- stack (activation frame)
+- code section
+
+Terms
+
+- **databases** - Operational data.
+
+- **dataware house** - Array of harddisk of data. contains **legacy data - historical**
+
+
+
+
 ## Useful stuff
 
 1. Queue is used to create a tree.

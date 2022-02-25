@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class BinaryTree
 {
-    public Node<int> root;
+    public Node<int> root { get; set; }
 
 
 
@@ -222,7 +222,7 @@ public class BinaryTree
     private int Count2(Node<int> root)
     {
         if (root is null) return 0;
-        if (root.leftChild is not null && root.rightChild)
+        if (root.leftChild != null && root.rightChild != null)
             return Count2(root.leftChild) + Count2(root.rightChild) + 1;
         return Count2(root.leftChild) + Count2(root.rightChild);
     }
