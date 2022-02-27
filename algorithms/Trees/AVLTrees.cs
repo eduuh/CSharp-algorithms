@@ -9,31 +9,34 @@ public class AvlTree
         internal int data;
         internal int height;
 
+        public Node(int data)
+        {
+            this.data = data;
+        }
+
     }
 
     internal Node RecursiveInsert(int key)
     {
-        if (this.root == null)
-        {
-            this.root = new Node(key);
-        }
-        return recursiveInsertCore(root, key);
+        Node insertedNode = recursiveInsertCore(root, key);
+        if (root is null) root = insertedNode;
+        return insertedNode;
     }
 
     int NodeHeight(Node node)
     {
         int hl, hr;
-        hl = node.lchild != null ? root.lchild.height : 0;
-        hr = node.rchild != null ? root.rchild.height : 0;
+        hl = node.lchild != null ? node.lchild.height : 0;
+        hr = node.rchild != null ? node.rchild.height : 0;
         return hl > hr ? hl + 1 : hr + 1;
     }
 
 
-    int BalanceFactor(Node p)
+    int BalanceFactor(Node node)
     {
         int hl, hr;
-        hl = node.lchild != null ? root.lchild.height : 0;
-        hr = node.rchild != null ? root.rchild.height : 0;
+        hl = node.lchild != null ? node.lchild.height : 0;
+        hr = node.rchild != null ? node.rchild.height : 0;
         return hl - hr;
     }
 
@@ -62,37 +65,76 @@ public class AvlTree
             Node newnode = new(key);
             root = newnode;
             newnode.height = 1;
-            return root;
         }
-        if (root.data < key)
+        else
         {
-            root.rightChild = recursiveInsertCore(root.rightChild, key);
-        }
-        else if (root.data > key)
-        {
-            root.leftChild = recursiveInsertCore(root.leftChild, key);
-        }
 
-        root.height = NodeHeight(root);
+            if (root.data < key)
+            {
+                root.rchild = recursiveInsertCore(root.rchild, key);
+            }
+            else if (root.data > key)
+            {
+                root.lchild = recursiveInsertCore(root.lchild, key);
+            }
 
-        if (BalanceFactor(root) == 2 && BalanceFactor(root.lchild) == 1)
-        {
-            return LLRotation(root);
-        }
-        else if (BalanceFactor(root) == 2 && BalanceFactor(root.lchild) == -1)
-        {
-            return LRRotation(root);
-        }
-        else if (BalanceFactor(root) == -2 && BalanceFactor(root.lchild) == -1)
-        {
-            return RRRotation(root);
-        }
-        else if (BalanceFactor(root) == -2 && BalanceFactor(root.lchild) == 1)
-        {
-            return RLRotation(root);
-        }
+            root.height = NodeHeight(root);
 
+            if (BalanceFactor(root) == 2 && BalanceFactor(root.lchild) == 1)
+            {
+                return LLRotation(root);
+            }
+            else if (BalanceFactor(root) == 2 && BalanceFactor(root.lchild) == -1)
+            {
+                return LRRotation(root);
+            }
+            else if (BalanceFactor(root) == -2 && BalanceFactor(root.lchild) == -1)
+            {
+                return RRRotation(root);
+            }
+            else if (BalanceFactor(root) == -2 && BalanceFactor(root.lchild) == 1)
+            {
+                return RLRotation(root);
+            }
+
+        }
 
         return root;
     }
+
+    private Node RLRotation(Node root)
+    {
+        throw new NotImplementedException();
+    }
+
+    private Node RRRotation(Node root)
+    {
+        throw new NotImplementedException();
+    }
+
+    private Node LRRotation(Node root)
+    {
+        Node pl = root.lchild;
+        Node plr = root.rchild;
+
+        pl.rchild = plr.lchild;
+        pl.lchild = plr.rchild;
+
+        plr.lchild = pl;
+        plr.rchild = pl;
+
+        pl.height = NodeHeight(pl);
+        plr.height = NodeHeight(root);
+        plr.height = NodeHeight(plr);
+        if (this.root == root)
+        {
+            this.root = plr;
+
+        }
+        return plr;
+    }
+
+    // creating avl tree  10 , 20 , 30 , 25 , 28 , 25 5
+
+
 }

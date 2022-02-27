@@ -107,3 +107,39 @@ tree.InorderTravesalCore();
 Console.WriteLine();
 tree.IterativePreorderTravesal();
 tree.InorderTravesalCore();
+
+
+
+
+int[] array = new int[] { 30, 20, 10, 15, 25, 40, 50, 45 };
+int[] filtered = Array.FindAll(array, x => x % 2 != 0);
+Array.ForEach(filtered, Console.WriteLine);
+
+int[] arrayresize = new int[] { 30, 20, 10, 15, 25, 40, 50, 45 };
+
+AvlTree avltree = new();
+avltree.RecursiveInsert(10);
+avltree.RecursiveInsert(5);
+avltree.RecursiveInsert(2);
+
+
+
+
+NodeBinary<int> binary = new(14);
+NodeBinary<string> stringNodes = new("A");
+NodeBinary<coordinatse> coordinateNode = new(new coordinatse());
+
+binary.left = stringNodes;
+binary.right = coordinateNode;
+
+class coordinatse
+{
+    private int x;
+    private int y;
+
+    public coordinatse(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+}
