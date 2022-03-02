@@ -44,3 +44,9 @@ Console.WriteLine(stringValidation.Reverse2(null));
 
 
 Console.WriteLine(stringValidation.ReverseEachWord("This is edwins case and Madam"));
+
+// UniqueCharacters
+
+string input = "ilovecoding";
+var edwin = stringValidation.checkifStringContainsUninqueCharacters(input);
+Console.WriteLine(edwin);

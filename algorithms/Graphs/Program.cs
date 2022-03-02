@@ -1,4 +1,30 @@
-﻿int[,] graph = new int[7, 7]{
+﻿using System.Text;
+using Graphs;
+
+
+
+//setupgraph
+//startdijkstra
+//process
+//getpath
+var grid = Dijkstra.SetupGrid(new string[] { "A", "B", "C" }, new uint[] { 0, 1, 15, 1, 2, 30 });
+var algo = Dijkstra.StartDijkstra(grid, 0, 2);
+Dijkstra.Process(algo);
+var path = Dijkstra.GetPath(algo);
+
+StringBuilder builder = new StringBuilder();
+Array.ForEach(path, x =>
+{
+    if (x != 0) builder.Append(x + " ");
+});
+Console.WriteLine(builder.ToString());
+
+
+
+
+
+
+int[,] graph = new int[7, 7]{
  {0,0,0,0,0,0,0},
  {0,0,1,1,0,0,0},
  {0,1,0,0,1,0,0},
@@ -35,6 +61,8 @@ void bfs(int[,] arr, int start, int n)
         }
     }
 }
+
+
 public static class DFS
 {
     static int[] visited = new int[7];
@@ -56,3 +84,4 @@ public static class DFS
         }
     }
 }
+
